@@ -1,2 +1,2 @@
 # apirabbit
-Create API endpoints on the fly for testing and whatever else
+Create API endpoints on the fly for testing, public use, and whatever else.
