@@ -1,0 +1,23 @@
+{
+  "name": "apirabbit",
+  "description": "A utility to quickly spin up API's for testing and other things",
+  "main": "index.js",
+  "authors": [
+    "Cory Price"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "api"
+  ],
+  "homepage": "http://apirabbit.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css": "^3.3.6"
+  }
+}
