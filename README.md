@@ -17,9 +17,15 @@ Create API endpoints on the fly for testing, public use, and whatever else.
 
 ## Architecture Notes
 
-`Views` => `Actions` => `Dispatcher` => `Store`
+`/server/server.js`	--> `/server/controllers/` 	--> `views`
+					|
+					--> `/app/controllers/`		--> `views`
 
 ## Database
 
 - Using [Robomongo](https://robomongo.org/download) as an Admin UI. It's pretty good.
+
+## ESLint
+
+- This app uses ESLint. Means you'll have to add a `/*global foo */` for global vars/functions.
 
