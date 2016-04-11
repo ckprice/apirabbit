@@ -17,9 +17,7 @@ Create API endpoints on the fly for testing, public use, and whatever else.
 
 ## Architecture Notes
 
-`/server/server.js`	--> `/server/controllers/` 	--> `views`
-					|
-					--> `/app/controllers/`		--> `views`
+`/server/server.js`	--> `/{server,app}/controllers/`	--> `views`
 
 ## Database
 
