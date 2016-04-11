@@ -21,3 +21,5 @@ Create API endpoints on the fly for testing, public use, and whatever else.
 
 ## Database
 
+- Using [Robomongo](https://robomongo.org/download) as an Admin UI. It's pretty good.
+

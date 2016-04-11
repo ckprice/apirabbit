@@ -2,10 +2,12 @@ var gulp = require("gulp");
 var browserify = require("browserify");
 var reactify = require("reactify");
 var source = require("vinyl-source-stream");
+var eslint = require('eslint/lib/cli');
+var globby = require('globby');
 
 gulp.task("bundle", function () {
     return browserify({
-        entries: "./app/main.jsx",
+        entries: ["./app/main.jsx","./app/views/create.jsx"],
         debug: true
     }).transform(reactify)
         .bundle()
