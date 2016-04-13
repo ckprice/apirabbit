@@ -1,25 +1,55 @@
-var gulp = require("gulp");
-var browserify = require("browserify");
-var reactify = require("reactify");
-var source = require("vinyl-source-stream");
-var eslint = require('eslint/lib/cli');
-var globby = require('globby');
+var gulp = require('gulp');
+var browserify = require('browserify');
+var reactify = require('reactify');
+var source = require('vinyl-source-stream');
+var eslint = require('gulp-eslint');
+var appRoot = process.cwd();
 
-gulp.task("bundle", function () {
+gulp.task('bundle', function () {
     return browserify({
-        entries: ["./app/main.jsx","./app/views/create.jsx"],
+        entries: ['./app/main.jsx',
+                './app/views/create.jsx',
+                './app/views/layouts/default.jsx'],
         debug: true
     }).transform(reactify)
         .bundle()
-        .pipe(source("main.js"))
-        .pipe(gulp.dest("app/dist"))
+        .pipe(source('main.js'))
+        .pipe(gulp.dest('app/dist'));
 });
 
-gulp.task("copy", ["bundle"], function () {
-    return gulp.src(["app/index.html","app/lib/bootstrap-css/css/bootstrap.min.css","app/style.css"])
-        .pipe(gulp.dest("app/dist"));
+gulp.task('copy', ['bundle'], function () {
+    return gulp.src(['app/index_tutorial.html',
+        'app/lib/bootstrap-css/css/bootstrap.min.css',
+        'app/lib/bootstrap-css/js/bootstrap.min.js',
+        'app/lib/jquery-1.12.3.min.js',
+        'app/style.css'])
+        .pipe(gulp.dest('app/dist'));
 });
 
-gulp.task("default",["copy"],function(){
-   console.log("Gulp completed..."); 
+gulp.task('lint', function() {
+  return gulp.src(['*.js', appRoot + '/app/**/*.js', appRoot + '/app/**/*.jsx']).pipe(eslint({
+    'rules':{
+        'quotes': [1, 'single'],
+        'semi': [1, 'always']
+    }
+  }))
+  .pipe(eslint({
+            globals: {
+                "require": true,
+                $: true,
+                "process": true,
+                "module": true,
+                "document": true,
+                "jQuery": false
+            }
+        }))
+  .pipe(eslint.format())
+  // Brick on failure to be super strict
+  .pipe(eslint.failOnError());
 });
+
+gulp.task('watch', function() {
+    gulp.watch([appRoot + '/app/**/*.jsx'], ['copy','lint']);
+});
+
+gulp.task("default",['copy','lint','watch'],function(){ });

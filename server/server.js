@@ -28,4 +28,4 @@ app.listen(7777, function () {
 });
 
 // Connect to mongodb database
-mongoose.connect("mongodb://localhost/apirabbit");
+mongoose.connect("mongodb://0.0.0.0:27017/apirabbit");

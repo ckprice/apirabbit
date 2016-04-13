@@ -1,0 +1,7 @@
+app/lib/bootstrap-css/js/bootstrap.min.js
+app/lib/bootstrap-css/js/bootstrap.js
+app/lib/jquery-1.12.3.min.js
+app/dist/main.js
+app/dist/jquery-1.12.3.min.js
+app/dist/bootstrap.js
+app/dist/bootstrap.min.js

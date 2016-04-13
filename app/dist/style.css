@@ -1,0 +1,11 @@
+body {
+	padding-top: 50px;
+}
+.main {
+	padding: 40px 15px;
+	text-align: center;
+}
+.logo {
+	height: 40px;
+	width: 40px;
+}

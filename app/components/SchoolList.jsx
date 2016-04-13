@@ -2,7 +2,7 @@ var React = require("react");
 var SchoolInfo = require("./SchoolInfo.jsx")
 var AddSchool = require("./AddSchool.jsx");
 
-module.exports = React.createClass({
+var SchoolList = React.createClass({
    render:function(){
        return(
            <div className="row">
@@ -22,3 +22,5 @@ module.exports = React.createClass({
        )
    } 
 });
+
+module.exports = SchoolList;
