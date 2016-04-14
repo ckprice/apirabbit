@@ -10,5 +10,5 @@ var getSchoolsCallback = function(schools){
 schoolsStore.onChange(getSchoolsCallback);
 
 function render(){
-    ReactDOM.render(<SchoolsList schools={_schools} />, document.getElementById("container"));    
+    ReactDOM.render(<SchoolsList schools={_schools} />, document.getElementById("component-container"));    
 }

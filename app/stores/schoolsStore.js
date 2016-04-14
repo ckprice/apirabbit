@@ -16,15 +16,13 @@ function SchoolStore() {
     }
 
     function addSchool(school) {
-        schoolService.addSchool(school).then(function (res) {
-            console.log(res);
+        schoolService.addSchool(school).then(function () {
             triggerListeners();
         });
     }
 
     function deleteSchool(school) {
-        schoolService.deleteSchool(school).then(function (res) {
-            console.log(res);
+        schoolService.deleteSchool(school).then(function () {
             triggerListeners();
         });
     }

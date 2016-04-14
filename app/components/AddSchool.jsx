@@ -1,7 +1,7 @@
 var React = require("react");
 var actions = require("../actions/SchoolActions");
 
-module.exports = React.createClass({
+var AddSchool = React.createClass({
     getInitialState:function(){
       return {
           name:"",
@@ -37,3 +37,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+module.exports = AddSchool;

@@ -1,7 +1,7 @@
 var React = require("react");
 var actions = require("../actions/SchoolActions");
 
-module.exports = React.createClass({
+var SchoolInfo =  React.createClass({
     deleteSchool: function(e){
         e.preventDefault();
         actions.deleteSchool(this.props.info);
@@ -18,3 +18,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+module.exports = SchoolInfo;

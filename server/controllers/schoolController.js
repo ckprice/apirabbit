@@ -1,4 +1,3 @@
-var mongoose = require("mongoose");
 var School = require("../data/school");
 var _ = require("underscore");
 
