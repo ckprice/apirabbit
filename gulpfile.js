@@ -1,24 +1,22 @@
-var gulp = require('gulp');
-var browserify = require('browserify');
-var reactify = require('reactify');
-var source = require('vinyl-source-stream');
+var gulp = require("gulp");
+var browserify = require("browserify");
+var reactify = require("reactify");
+var source = require("vinyl-source-stream");
 var eslint = require('gulp-eslint');
 var appRoot = process.cwd();
 
-gulp.task('bundle', function () {
+gulp.task("bundle", function () {
     return browserify({
-        entries: ['./app/main.jsx',
-                './app/views/create.jsx',
-                './app/views/layouts/default.jsx'],
+        entries: ["./app/createAPI.jsx"],
         debug: true
     }).transform(reactify)
         .bundle()
-        .pipe(source('main.js'))
-        .pipe(gulp.dest('app/dist'));
+        .pipe(source("main.js"))
+        .pipe(gulp.dest("app/dist"))
 });
 
 gulp.task('copy', ['bundle'], function () {
-    return gulp.src(['app/index_tutorial.html',
+    return gulp.src(['app/index.html',
         'app/lib/bootstrap-css/css/bootstrap.min.css',
         'app/lib/bootstrap-css/js/bootstrap.min.js',
         'app/lib/jquery-1.12.3.min.js',
@@ -27,7 +25,10 @@ gulp.task('copy', ['bundle'], function () {
 });
 
 gulp.task('lint', function() {
-  return gulp.src(['*.js', appRoot + '/app/**/*.js', appRoot + '/app/**/*.jsx']).pipe(eslint({
+  return gulp.src(['*.js', '*.jsx',
+        appRoot + '/app/**/*.js',
+        appRoot + '/server/**/*.js',
+        appRoot + '/app/**/*.jsx']).pipe(eslint({
     'rules':{
         'quotes': [1, 'single'],
         'semi': [1, 'always']
@@ -40,6 +41,9 @@ gulp.task('lint', function() {
                 "process": true,
                 "module": true,
                 "document": true,
+                "__dirname": true,
+                "print": true,
+                "console": true,
                 "jQuery": false
             }
         }))
@@ -48,8 +52,16 @@ gulp.task('lint', function() {
   .pipe(eslint.failOnError());
 });
 
+
 gulp.task('watch', function() {
-    gulp.watch([appRoot + '/app/**/*.jsx'], ['copy','lint']);
+    gulp.watch([appRoot + '/app/style.css',
+        appRoot + '/app/**/*.jsx',
+        appRoot + '/app/stores/*.js',
+        appRoot + '/app/*.jsx',
+        appRoot + '/app/index.html',
+        appRoot + '/server/**/*.js',
+        appRoot + '/server/*.js'],
+        ['copy','lint']);
 });
 
 gulp.task("default",['copy','lint','watch'],function(){ });
