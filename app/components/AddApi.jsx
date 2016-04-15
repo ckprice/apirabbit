@@ -53,6 +53,13 @@ var AddApi = React.createClass({
         return(
             <form className="form" onSubmit={this.addApi}>
                 <div className="form-group">
+                  <div className="btn-group" role="group" aria-label="...">
+                    <button type="button" className="btn btn-warning">Paste JSON</button>
+                    <button type="button" className="btn btn-default disabled" title="Coming soon!">Import from file</button>
+                    <button type="button" className="btn btn-default disabled" title="Coming soon!">Build via tool</button>
+                  </div>
+                </div>
+                <div className="form-group">
                     <input type="text" className="form-control" id="name" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Untitled" />                    
                 </div>
                 <div className="form-group">
@@ -62,7 +69,7 @@ var AddApi = React.createClass({
                   visible={this.state.errorVisible} 
                   errorMessage={this.state.errorMessage} />
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary">Create</button>
+                    <button type="submit" className="btn btn-primary">Create API</button>
                 </div>
             </form>
         )
