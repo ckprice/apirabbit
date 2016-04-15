@@ -1,6 +1,6 @@
 var React = require("react");
 var actions = require("../actions/ApiActions");
-var InputError = require("./InputError.jsx");
+var InputMessage = require("./InputMessage.jsx");
 var JSONLint = require('json-lint');
 
 var AddApi = React.createClass({
@@ -8,34 +8,37 @@ var AddApi = React.createClass({
       return {
           name:"Untitled",
           text:"",
-          errorMessage: "Input is invalid",
-          errorVisible: false
+          message: '',
+          messageType: '',
+          messageVisible: false
       }  
     },
     addApi:function(e){
         e.preventDefault();
         this.setState({
-          errorMessage: '',
-          errorVisible: false
+          message: '',
+          messageType: '',
+          messageVisible: false
         });
         if (this.validateJSON()) {
+          this.setState({
+            name:'',
+            text:'',
+            message: 'Your API has been successfully created!',
+            messageType: 'success',
+            messageVisible: true
+          });
           actions.addApi(this.state);
         }
     },
     validateJSON:function(){
-      // Run the JSON string through the linter 
-      console.log('linting + ' + this.state.text)
       var lint = JSONLint( this.state.text );
-        
-      // Do something with the error 
+
       if ( lint.error ) {
-        // Error Message lint.error 
-        // Line number in json file where error was found lint.line; 
-        // Character of line in json file where error was found lint.character;
-        console.log('[' + lint.line + ':' + lint.character +'] ' + lint.error);
         this.setState({
-          errorMessage: '[' + lint.line + ':' + lint.character +'] ' + lint.error,
-          errorVisible: true
+          message: '[' + lint.line + ':' + lint.character +'] ' + lint.error,
+          messageType: 'error',
+          messageVisible: true
         });
         return false;
       } else {
@@ -65,9 +68,10 @@ var AddApi = React.createClass({
                 <div className="form-group">
                     <textarea rows="10" type="text" className="form-control json-input" id="text" name="text" value={this.state.text} onChange={this.handleInputChange} placeholder="Paste JSON" />
                 </div>
-                <InputError 
-                  visible={this.state.errorVisible} 
-                  errorMessage={this.state.errorMessage} />
+                <InputMessage
+                  visible={this.state.messageVisible}
+                  messageType={this.state.messageType}
+                  message={this.state.message} />
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">Create API</button>
                 </div>
