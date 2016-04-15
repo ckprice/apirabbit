@@ -19,7 +19,7 @@ Create API endpoints on the fly for testing, public use, and whatever else.
 
 `Views` => `Actions` => `Dispatcher` => `Store`
 
-## License Info
+## Stuff this uses
 
 - Thanks for [the carrot](https://www.iconfinder.com/Squid.ink)!
-
+- [JSON Linter](https://www.npmjs.com/package/json-lint)

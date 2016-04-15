@@ -1,5 +1,6 @@
 var React = require("react");
 var actions = require("../actions/ApiActions");
+var ta = require('time-ago')();
 
 var ApiInfo =  React.createClass({
     deleteApi: function(e){
@@ -7,13 +8,13 @@ var ApiInfo =  React.createClass({
         actions.deleteApi(this.props.info);
     },
     render:function(){
+        var timeago = ta.ago(this.props.info.created_date);
         return(
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    {this.props.info.name}
+                    <a href={'/api/' + this.props.info._id} target='_blank'>{this.props.info.name}</a>, {timeago}
                     <span className="pull-right text-uppercase delete-button" onClick={this.deleteApi}>&times;</span>
                 </div>
-                <div className="panel-body">{this.props.info.text}</div>
             </div>
         )
     }

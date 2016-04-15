@@ -8,6 +8,11 @@ var apiController = require("./controllers/apiController");
 
 // Express request pipeline
 var app = express();
+
+// Express variables
+
+app.set('json spaces', 3); // For JSON API prettify
+
 app.use(express.static(path.join(__dirname, "../app/dist")));
 app.use(bodyParser.json())
 app.use("/api", apiController);

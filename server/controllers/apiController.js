@@ -3,9 +3,11 @@ var _ = require("underscore");
 
 var router = require("express").Router();
 router.route("/apis/:id?").get(getApis).post(addApi).delete(deleteApi);
+router.route("/:id?").get(getRabbit);
 
+// These are API's used to faciliate the website
 function getApis(req, res) {
-    Api.find(function (err, apis) {
+    Api.find().sort({ created_date: -1 }).exec(function (err, apis) {
         if (err)
             res.send(err);
         else
@@ -30,6 +32,18 @@ function deleteApi(req, res) {
             res.send(err)
         else
             res.json(removed);
+    });
+}
+
+// These are the things users call (calling them rabbits for now)
+function getRabbit(req, res) {
+    var id = req.params.id;
+    Api.find({ _id: id }, 'text').lean().exec(function (err, api) {
+        if (err)
+            res.send(err);
+        else
+            var jsonObj = JSON.parse(api[0].text)
+            res.json(jsonObj);
     });
 }
 

@@ -6,8 +6,9 @@ var JSONLint = require('json-lint');
 var AddApi = React.createClass({
     getInitialState:function(){
       return {
-          name:"Untitled",
-          text:"",
+          name:"Untitled-" + new Date().getTime(),
+          text:'{"Hello": "World"}',
+          type: 'json',
           message: '',
           messageType: '',
           messageVisible: false
@@ -21,14 +22,15 @@ var AddApi = React.createClass({
           messageVisible: false
         });
         if (this.validateJSON()) {
+          actions.addApi(this.state);
           this.setState({
-            name:'',
-            text:'',
+            name:"Untitled-" + new Date().getTime(),
+            text:'{"Hello": "World"}',
+            type: 'json',
             message: 'Your API has been successfully created!',
             messageType: 'success',
             messageVisible: true
           });
-          actions.addApi(this.state);
         }
     },
     validateJSON:function(){
@@ -57,9 +59,11 @@ var AddApi = React.createClass({
             <form className="form" onSubmit={this.addApi}>
                 <div className="form-group">
                   <div className="btn-group" role="group" aria-label="...">
-                    <button type="button" className="btn btn-warning">Paste JSON</button>
-                    <button type="button" className="btn btn-default disabled" title="Coming soon!">Import from file</button>
-                    <button type="button" className="btn btn-default disabled" title="Coming soon!">Build via tool</button>
+                    <button type="button" className="btn btn-default active">Paste JSON</button>
+                    <button type="button" className="btn btn-default disabled" title="the future">Import from file</button>
+                    <button type="button" className="btn btn-default disabled" title="the future">Build via tool</button>
+                    <button type="button" className="btn btn-default disabled" title="the future">Set GET/POST/DELETE</button>
+                    <button type="button" className="btn btn-default disabled" title="the future">Edit Custom Headers</button>
                   </div>
                 </div>
                 <div className="form-group">
@@ -73,7 +77,7 @@ var AddApi = React.createClass({
                   messageType={this.state.messageType}
                   message={this.state.message} />
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary">Create API</button>
+                    <button type="submit" className="btn btn-success">Create your API</button>
                 </div>
             </form>
         )

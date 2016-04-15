@@ -6,8 +6,12 @@ body {
   text-align: center;
 }
 .logo {
-	height:40px;
-	width:40px;
+	height:50px;
+	width:50px;
+}
+.logo-small {
+	height:25px;
+	width:25px;
 }
 .json-input {
 	font-family: courier;
@@ -19,4 +23,7 @@ body {
 .footer {
     border-top: 1px solid #eee;
     padding: 20px;
+}
+.delete-button{
+	cursor: pointer;
 }
