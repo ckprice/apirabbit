@@ -12,7 +12,7 @@ var ApiInfo =  React.createClass({
         return(
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    <a href={'/api/' + this.props.info._id}>{this.props.info.name}</a>, {timeago}
+                    <a href={'/api/' + this.props.info._id} target='_blank'>{this.props.info.name}</a>, {timeago}
                     <span className="pull-right text-uppercase delete-button" onClick={this.deleteApi}>&times;</span>
                 </div>
             </div>

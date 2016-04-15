@@ -38,11 +38,12 @@ function deleteApi(req, res) {
 // These are the things users call (calling them rabbits for now)
 function getRabbit(req, res) {
     var id = req.params.id;
-    Api.find({ _id: id }, 'text' , function (err, api) {
+    Api.find({ _id: id }, 'text').lean().exec(function (err, api) {
         if (err)
             res.send(err);
         else
-            res.json(api);        
+            var jsonObj = JSON.parse(api[0].text)
+            res.json(jsonObj);
     });
 }
 
