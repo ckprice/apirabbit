@@ -7,7 +7,7 @@ var appRoot = process.cwd();
 
 gulp.task("bundle", function () {
     return browserify({
-        entries: ["./app/createAPI.jsx"],
+        entries: ["./app/createApi.jsx"],
         debug: true
     }).transform(reactify)
         .bundle()
