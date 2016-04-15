@@ -19,5 +19,7 @@ Create API endpoints on the fly for testing, public use, and whatever else.
 
 `Views` => `Actions` => `Dispatcher` => `Store`
 
-## Database
+## License Info
+
+- Thanks for [the carrot](https://www.iconfinder.com/Squid.ink)!
 

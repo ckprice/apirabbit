@@ -16,3 +16,7 @@ body {
 .invisible {
 	display: none;
 }
+.footer {
+    border-top: 1px solid #eee;
+    padding: 20px;
+}
