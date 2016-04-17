@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "../app/dist")));
 app.use(bodyParser.json())
 app.use("/api", apiController);
 
-app.listen(7777, function () {
+app.listen(process.env.PORT || 7777, function () {
     
 });
 
