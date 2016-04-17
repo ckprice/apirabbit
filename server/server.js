@@ -22,4 +22,4 @@ app.listen(7777, function () {
 });
 
 // Connect to mongodb database
-mongoose.connect("mongodb://0.0.0.0/apirabbit");
+mongoose.connect("mongodb://apirabbit_webuser:apiRABBIT123*@ds011311.mlab.com:11311/heroku_m42brtpt");
