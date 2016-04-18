@@ -1,6 +1,11 @@
 # apirabbit
 Create API endpoints on the fly for testing, public use, and whatever else.
 
+## URL
+
+- Hosted on heroku at [http://apirabbit.herokuapp.com](http://apirabbit.herokuapp.com)
+- May use apirabb.it or apirabbit.com some day.
+
 ## Development
 
 ### Front end
@@ -17,9 +22,10 @@ Create API endpoints on the fly for testing, public use, and whatever else.
 
 ## Architecture Notes
 
-`Views` => `Actions` => `Dispatcher` => `Store`
+- Mostly sticks to Flux Architecture
 
 ## Stuff this uses
 
 - Thanks for [the carrot](https://www.iconfinder.com/Squid.ink)!
 - [JSON Linter](https://www.npmjs.com/package/json-lint)
+- Bootstrap
