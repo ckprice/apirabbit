@@ -1,4 +1,6 @@
 # apirabbit
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ckprice/apirabbit.svg)](https://greenkeeper.io/)
 Create API endpoints on the fly for testing, public use, and whatever else.
 
 ## URL
